@@ -1,0 +1,140 @@
+/* =========================
+   SERVICES SECTION
+========================= */
+
+.services-section {
+  position: relative;
+  width: 100%;
+  padding: 55px 0 65px;
+  background-color: #f8f7f4;
+  overflow: hidden;
+}
+
+/* العنوان */
+
+.services-heading {
+  text-align: center !important;
+  margin-bottom: 5rem;
+}
+
+.services-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #f3c64f;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.services-label::before,
+.services-label::after {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background-color: #f3c64f;
+}
+
+/* .services-heading h2 {
+  color: #0b1f44;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  margin: 0;
+  text-align: center !important;
+
+} */
+
+/* شبكة الخدمات */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+}
+
+.service-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 105px;
+  padding: 8px 15px;
+  text-align: center;
+}
+
+/* الفواصل الذهبية */
+
+.service-item:not(:last-child) {
+  border-left: 1px solid rgba(212, 175, 55, 0.55);
+}
+
+/* الأيقونات */
+
+.service-icon {
+  width: 35px;
+  height: 35px;
+  color: #f3c64f;
+  transition: transform 0.35s ease;
+}
+
+.service-item h3 {
+  margin: 0;
+  color: #374151;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+/* حركة بسيطة عند المرور */
+
+.service-item:hover .service-icon {
+  transform: translateY(-5px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .services-section {
+    padding: 45px 0;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 25px;
+  }
+
+  .service-item:nth-child(2) {
+    border-left: none;
+  }
+
+  .service-item:nth-child(3) {
+    border-left: 1px solid rgba(212, 175, 55, 0.55);
+  }
+
+  .service-item {
+    min-height: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-heading {
+    margin-bottom: 28px;
+  }
+
+  .services-heading h2 {
+    font-size: 24px;
+  }
+
+  .service-item h3 {
+    font-size: 13px;
+  }
+
+  .service-icon {
+    width: 31px;
+    height: 31px;
+  }
+}

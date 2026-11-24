@@ -1,0 +1,382 @@
+/* =========================
+   MAIN FOOTER
+========================= */
+
+.rawasi-footer {
+  position: relative;
+  width: 100%;
+  background: #091d35;
+  color: #fff;
+  overflow: hidden;
+  /* font-family: inherit; */
+}
+
+
+/* =========================
+   TOP SECTION
+========================= */
+
+.footer-top {
+  position: relative;
+  min-height: 158px;
+  border-bottom: 1px solid rgba(212, 164, 71, 0.75);
+  overflow: hidden;
+}
+
+.footer-top-inner {
+  direction: ltr;
+
+  width: min(96%, 1500px);
+  min-height: 157px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1.05fr 1.55fr 0.65fr 0.65fr;
+  align-items: center;
+
+  gap: 35px;
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.footer-brand img {
+  width: 190px;
+  height: 110px;
+  object-fit: contain;
+  display: block;
+}
+
+
+/* =========================
+   NEWSLETTER
+========================= */
+
+.footer-newsletter {
+  direction: rtl;
+  text-align: right;
+  padding: 10px 0;
+}
+
+.footer-newsletter h3,
+.footer-quick-links h3,
+.footer-follow h3 {
+  color: #e5c17c;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0 0 9px;
+}
+
+.footer-newsletter p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 11px;
+  margin: 0 0 14px;
+}
+
+.footer-newsletter-form {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  max-width: 370px;
+}
+
+.footer-newsletter-form input {
+  flex: 1;
+  min-width: 0;
+  height: 39px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+
+  background: #f5f3ef;
+  color: #0b1f44;
+
+  padding: 0 13px;
+  /* font-family: inherit; */
+  font-size: 11px;
+
+  outline: none;
+}
+
+.footer-newsletter-form input::placeholder {
+  color: #777;
+}
+
+.footer-newsletter-form input:focus {
+  border-color: #d4af37;
+}
+
+.footer-newsletter-form button {
+  height: 39px;
+  min-width: 75px;
+
+  padding: 0 15px;
+
+  background: #d5a43f;
+  color: #10213a;
+
+  border: none;
+  border-radius: 4px;
+
+  /* font-family: inherit; */
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.footer-newsletter-form button:hover {
+  background: #edc46e;
+}
+
+
+/* =========================
+   QUICK LINKS
+========================= */
+
+.footer-quick-links {
+  direction: rtl;
+  height: 85px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+
+  border-left: 1px solid rgba(212, 164, 71, 0.4);
+  padding-left: 25px;
+}
+
+.footer-quick-links h3 {
+  margin-bottom: 3px;
+}
+
+.footer-quick-links a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-quick-links a:hover {
+  color: #d4af37;
+}
+
+
+/* =========================
+   SOCIAL MEDIA
+========================= */
+
+.footer-follow {
+  direction: rtl;
+  height: 85px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-follow h3 {
+  margin-bottom: 15px;
+}
+
+.footer-socials {
+  direction: ltr;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-socials a {
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+
+  transition: 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: #d4af37;
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   THREE GOLDEN MOUNTAINS
+========================= */
+
+.footer-mountain-line {
+  position: absolute;
+  z-index: 1;
+
+  width: 180px;
+  height: 65px;
+
+  right: 0;
+  bottom: 0;
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   BOTTOM SECTION
+========================= */
+
+.footer-bottom {
+  min-height: 35px;
+  background: #091d35;
+}
+
+.footer-bottom-inner {
+  width: min(96%, 1500px);
+  min-height: 35px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-copyright {
+  direction: rtl;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 10px;
+  margin: 0;
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-legal a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+  color: #d4af37;
+}
+
+.footer-legal span {
+  height: 13px;
+  width: 1px;
+  background: rgba(212, 164, 71, 0.55);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .footer-top-inner {
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 20px;
+    padding: 20px 0;
+  }
+
+  .footer-brand {
+    grid-column: 1;
+  }
+
+  .footer-brand img {
+    width: 145px;
+  }
+
+  .footer-newsletter {
+    grid-column: 2;
+  }
+
+  .footer-quick-links {
+    grid-column: 3;
+  }
+
+  .footer-follow {
+    grid-column: 3;
+    height: auto;
+  }
+
+  .footer-top {
+    padding-bottom: 15px;
+  }
+
+  .footer-mountain-line {
+    width: 130px;
+    height: 48px;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .footer-top-inner {
+    direction: rtl;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 15px;
+    padding: 25px 0 45px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+
+  .footer-brand img {
+    width: 170px;
+    height: 90px;
+  }
+
+  .footer-newsletter {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .footer-newsletter-form {
+    max-width: 100%;
+  }
+
+  .footer-quick-links {
+    grid-column: 1;
+    grid-row: 3;
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .footer-follow {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px 0;
+    gap: 10px;
+  }
+
+  .footer-mountain-line {
+    width: 115px;
+    height: 42px;
+  }
+}

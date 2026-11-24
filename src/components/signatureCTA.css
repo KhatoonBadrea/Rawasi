@@ -1,0 +1,258 @@
+/* =================================
+   RAWASI SIGNATURE CTA
+================================= */
+
+.signature-cta {
+  margin-top: 15rem;
+  margin-bottom: 1rem;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 480px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: #0b1f44;
+}
+
+/* صورة الخلفية الثابتة */
+.signature-cta-background {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+
+  background-image: url("../assest/Dubai.jpg");
+  background-position: center 55%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* طبقة التعتيم */
+.signature-cta-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background: linear-gradient(
+    -90deg,
+    rgba(11, 31, 68, 0.78) 0%,
+    rgba(11, 31, 68, 0.52) 45%,
+    rgba(11, 31, 68, 0.12) 100%
+  );
+}
+
+/* =================================
+   WAVES
+================================= */
+
+.signature-wave {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 3;
+  display: block;
+  pointer-events: none;
+}
+
+.signature-wave path {
+  fill: var(--color-cream, #f8f7f4);
+}
+
+.signature-wave-top {
+  top: -1px;
+}
+
+.signature-wave-bottom {
+  bottom: -1px;
+}
+
+/* =================================
+   CONTENT
+================================= */
+
+.signature-cta-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-top: 170px;
+  padding-bottom: 170px;
+}
+
+.signature-cta-text {
+  max-width: 570px;
+  margin-right: 0;
+  margin-left: auto;
+  text-align: right;
+  color: #fff;
+}
+
+/* العلامة الصغيرة */
+.signature-cta-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 17px;
+
+  color: #f3c64f;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.signature-cta-label::before {
+  content: "";
+  width: 35px;
+  height: 1px;
+  background: #f3c64f;
+}
+
+/* العنوان */
+.signature-cta-text h2 {
+  margin: 0 0 12px;
+
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 3.5vw, 44px);
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.signature-cta-text h2 span {
+  color: #f3c64f;
+}
+
+/* الوصف */
+.signature-cta-text p {
+  margin: 0 0 23px;
+
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-arabic);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* الزر */
+.signature-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 13px 25px;
+  border-radius: 50px;
+
+  color: #0b1f44;
+  background: linear-gradient(135deg, #fff0a8 0%, #f3c64f 50%, #d4a638 100%);
+
+  font-family: var(--font-arabic);
+  font-size: 14px;
+  font-weight: 700;
+
+  box-shadow: 0 7px 22px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.signature-cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.signature-cta-button svg {
+  transition: transform 0.3s ease;
+}
+
+.signature-cta-button:hover svg {
+  transform: translateX(-4px);
+}
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 1024px) {
+  .signature-cta {
+    min-height: 450px;
+  }
+
+  .signature-wave {
+    height: 85px;
+  }
+
+  .signature-cta-content {
+    padding-top: 110px;
+    padding-bottom: 110px;
+  }
+
+  .signature-cta-text {
+    max-width: 520px;
+  }
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 640px) {
+  .signature-cta {
+    min-height: 440px;
+  }
+
+  .signature-cta-background {
+    background-attachment: scroll;
+    background-position: center;
+  }
+
+  .signature-cta-overlay {
+    background: rgba(11, 31, 68, 0.62);
+  }
+
+  .signature-wave {
+    height: 65px;
+  }
+
+  .signature-cta-content {
+    padding-top: 85px;
+    padding-bottom: 85px;
+  }
+
+  .signature-cta-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .signature-cta-label {
+    justify-content: center;
+    margin-bottom: 13px;
+  }
+
+  .signature-cta-label::before {
+    width: 25px;
+  }
+
+  .signature-cta-text h2 {
+    font-size: clamp(25px, 7vw, 34px);
+    line-height: 1.7;
+  }
+
+  .signature-cta-text p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .signature-cta-button {
+    padding: 12px 22px;
+    font-size: 13px;
+  }
+}
+
+/* تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  .signature-cta-button,
+  .signature-cta-button svg {
+    transition: none;
+  }
+}

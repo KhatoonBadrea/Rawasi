@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-navy: #0b1f44;
+  --color-navy-light: #142d55;
+  --color-gold: #f3c64f;
+  --color-gold-light: #e5c66b;
+
+  /* Background Colors */
+  --color-cream: #f8f7f4;
+  --color-white: #ffffff;
+
+  /* Text Colors */
+  --color-slate: #6b7280;
+
+  /* Fonts */
+  /* --font-arabic: "IBM Plex Sans Arabic", sans-serif; */
+  /* --font-heading: "Alexandria", sans-serif; */
+  /* --font-heading: "Amiri", serif;
+  --font-amiri: "Amiri", serif; */
+
+  /* Fonts */
+
+--font-arabic: "Tajawal", sans-serif;
+
+--font-heading: "Noto Kufi Arabic", sans-serif;
+
+--font-english: "Montserrat", sans-serif;
+
+--font-english-heading: "Cormorant Garamond", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* font-family:"Tajawal", sans-serif; */
+}
+
+/* ==============================
+   Featured Properties
+============================== */
+
+.property-card {
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #e5c66b;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(11, 31, 68, 0.05);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.property-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(11, 31, 68, 0.12);
+  border: 1px solid #f3c64f;
+}
+
+/* نافذة الكروت */
+.property-marquee {
+  width: 100%;
+  overflow: hidden;
+  padding: 12px 0 25px;
+}
+
+/* المسار المتحرك */
+.property-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: property-scroll 35s linear infinite;
+  will-change: transform;
+}
+
+/* إيقاف الحركة عند مرور الماوس */
+.property-marquee:hover .property-marquee-track {
+  animation-play-state: paused;
+}
+
+/* كل مجموعة من الكروت */
+.property-marquee-group {
+  display: flex;
+  gap: 24px;
+  padding-right: 24px; /* يضمن تساوي المسافة بين نهاية المجموعة الأولى وبداية الثانية */
+}
+
+/* عرض كل كارد */
+.property-marquee-item {
+  width: 340px;
+  flex-shrink: 0;
+}
+
+/* إخفاء شريط التمرير مع إبقاء التمرير فعالاً */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@keyframes property-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* الحركة من اليمين إلى اليسار */
+@keyframes property-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* إيقاف الحركة عند مرور المؤشر */
+.property-marquee:hover .property-marquee-track,
+.property-marquee:focus-within .property-marquee-track {
+  animation-play-state: paused;
+}
+
+/* احترام إعدادات تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  .property-marquee-track {
+    animation: none;
+  }
+
+  .property-card,
+  .property-card img {
+    transition: none;
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .property-marquee-item {
+    width: 285px;
+  }
+
+  .property-marquee-track {
+    gap: 16px;
+    animation-duration: 28s;
+  }
+}
+
+/* Global Styles */
+@layer base {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* scroll-behavior: smooth; */
+    /* outline: 2px solid red !important; */
+  }
+  /* 
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100%;
+    word-spacing: 3px;
+  } */
+
+  body {
+    /* overflow-x: hidden;
+    max-width: 100%; */
+    margin: 0;
+    direction: rtl;
+    /* font-family: var(--font-arabic); */
+    background-color: var(--color-cream);
+    color: var(--color-navy);
+  }
+
+  button,
+  a {
+    font-family: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    background-size: cover;
+  }
+
+  .hero-glass-card {
+    background: #142d5535;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* Shared Components */
+@layer components {
+  .container-main {
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12;
+  }
+
+  .gold-btn {
+    @apply inline-flex items-center justify-center gap-2
+    rounded-full bg-[linear-gradient(135deg,#FFF0A8_0%,#F3C64F_45%,#B8862D_100%)]
+    px-6 py-3 text-sm font-bold text-navy
+    shadow-md transition-all duration-300
+    hover:brightness-125 hover:shadow-2xs hover:shadow-[#F3C64F]/25
+    active:scale-[0.98];
+  }
+
+  .section-title {
+    @apply font-heading text-3xl font-bold text-navy
+    md:text-3xl tracking-[1.5px] leading-[1.7];
+  }
+}

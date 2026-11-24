@@ -1,0 +1,613 @@
+/* =================================
+   RAWASI - DESTINATIONS
+================================= */
+
+.destinations-section {
+  position: relative;
+  width: 100%;
+  padding: 115px 0 75px;
+  background: #142a4c;
+  color: #fff;
+  overflow: hidden;
+}
+
+.destinations-container {
+  width: min(1380px, calc(100% - 100px));
+  margin: 0 auto;
+}
+
+/* =================================
+   HEADER
+================================= */
+
+.destinations-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 55px;
+}
+
+.destinations-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #d4af37;
+  font-family: "Tajawal", sans-serif;
+  /* font-size: 11px; */
+  /* letter-spacing: 3px; */
+  /* font-weight: 600; */
+  margin-bottom: 20px;
+}
+
+.destinations-eyebrow-line {
+  width: 32px;
+  height: 1px;
+  background: #d4af37;
+}
+
+.destinations-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(35px, 4.5vw, 58px);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.destinations-header h2 span {
+  color: #d4af37;
+}
+
+.destinations-intro {
+  max-width: 340px;
+  margin: 0 0 8px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
+  line-height: 2.1;
+}
+
+/* =================================
+   SHOWCASE
+================================= */
+
+.destinations-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(270px, 0.75fr);
+  min-height: 570px;
+  gap: 0;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+/* =================================
+   IMAGE
+================================= */
+
+.destination-visual {
+  position: relative;
+  min-width: 0;
+  min-height: 570px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #142a4c;
+}
+
+.destination-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  animation: destinationImageReveal 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.destination-image-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background:
+  radial-gradient(
+    ellipse at bottom right,
+    rgba(5, 18, 40, 0.78) 0%,
+    rgba(5, 18, 40, 0.55) 22%,
+    rgba(5, 18, 40, 0.18) 45%,
+    rgba(5, 18, 40, 0) 68%
+  );
+}
+
+@keyframes destinationImageReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+/* أعلى الصورة */
+
+.destination-image-top {
+  position: absolute;
+  top: 30px;
+  left: 32px;
+  right: 32px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.destination-image-top i {
+  color: #d4af37;
+  font-style: normal;
+}
+
+.destination-image-number {
+  color: #d4af37;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.destination-image-number b {
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 400;
+}
+
+/* معلومات المدينة */
+
+.destination-image-content {
+  position: absolute;
+  right: 55px;
+  bottom: 90px;
+  max-width: 490px;
+
+  animation: destinationTextReveal 0.8s ease both;
+}
+
+@keyframes destinationTextReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.destination-country {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #e1c77f;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.destination-country svg {
+  color: #d4af37;
+}
+
+.destination-image-content h3 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(55px, 7vw, 90px);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.destination-english {
+  display: block;
+  margin-top: 8px;
+
+  color: #d4af37;
+  font-size: 12px;
+  letter-spacing: 6px;
+  font-weight: 500;
+}
+
+.destination-image-content p {
+  max-width: 370px;
+  margin-top: 22px;
+
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 2;
+}
+
+/* أسفل الصورة */
+
+.destination-image-bottom {
+  position: absolute;
+  bottom: 30px;
+  left: 32px;
+  right: 32px;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.destination-bottom-line {
+  width: 55px;
+  height: 1px;
+  background: #d4af37;
+}
+
+/* =================================
+   SIDEBAR
+================================= */
+
+.destinations-sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 32px 25px;
+  background: #142d5535;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.destinations-sidebar-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.destinations-sidebar-heading span:first-child {
+  color: #fff;
+  font-size: 19px;
+}
+
+.destinations-sidebar-heading span:last-child {
+  color: #a88b4c;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* روابط المدن */
+
+.destinations-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.destination-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  width: 100%;
+  padding: 23px 0;
+
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+
+  color: #fff;
+  text-align: right;
+  cursor: pointer;
+
+  transition:
+    padding 0.4s ease,
+    background 0.4s ease;
+}
+
+.destination-link::before {
+  content: "";
+  position: absolute;
+  right: -32px;
+  top: 0;
+  bottom: 0;
+
+  width: 2px;
+  background: #d4af37;
+
+  transform: scaleY(0);
+  transform-origin: bottom;
+
+  transition: transform 0.4s ease;
+}
+
+.destination-link.active::before {
+  transform: scaleY(1);
+}
+
+.destination-link-number {
+  color: #a88b4c;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.destination-link-name {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.destination-link-name strong {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 19px;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.destination-link-name small {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 9px;
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+.destination-link-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50%;
+
+  opacity: 0;
+  transform: translateX(8px);
+
+  transition: all 0.35s ease;
+}
+
+.destination-link.active .destination-link-name strong,
+.destination-link:hover .destination-link-name strong {
+  color: #fff;
+}
+
+.destination-link.active .destination-link-name small,
+.destination-link:hover .destination-link-name small {
+  color: #d4af37;
+}
+
+.destination-link.active .destination-link-arrow,
+.destination-link:hover .destination-link-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.destination-link:hover {
+  padding-right: 8px;
+}
+
+/* مؤشر التقدم */
+
+.destinations-progress {
+  margin-top: auto;
+  padding-top: 35px;
+}
+
+.destinations-progress-track {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.destinations-progress-track span {
+  display: block;
+  height: 100%;
+  background: #d4af37;
+  transition: width 0.5s ease;
+}
+
+.destinations-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+}
+
+/* أسفل القائمة */
+
+.destinations-sidebar-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 30px;
+  padding-top: 20px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+  color: #d4af37;
+}
+
+.destinations-sidebar-footer span {
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* =================================
+   SECTION FOOTER
+================================= */
+
+.destinations-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 25px;
+
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.destinations-footer-brand {
+  color: #c6a34d;
+}
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 900px) {
+  .destinations-container {
+    width: calc(100% - 50px);
+  }
+
+  .destinations-showcase {
+    grid-template-columns: minmax(0, 1.4fr) minmax(230px, 0.8fr);
+  }
+
+  .destinations-sidebar {
+    padding: 30px 22px 20px;
+  }
+
+  .destination-link::before {
+    right: -22px;
+  }
+
+  .destination-image-content {
+    right: 35px;
+  }
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 650px) {
+  .destinations-section {
+    padding: 75px 0 45px;
+  }
+
+  .destinations-container {
+    width: calc(100% - 32px);
+  }
+
+  .destinations-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .destinations-header h2 {
+    font-size: 36px;
+  }
+
+  .destinations-intro {
+    max-width: 100%;
+    font-size: 12px;
+  }
+
+  .destinations-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .destination-visual {
+    min-height: 470px;
+  }
+
+  .destination-image-content {
+    right: 25px;
+    left: 20px;
+    bottom: 75px;
+  }
+
+  .destination-image-content h3 {
+    font-size: 60px;
+  }
+
+  .destination-image-content p {
+    font-size: 12px;
+  }
+
+  .destination-image-top {
+    top: 22px;
+    left: 22px;
+    right: 22px;
+  }
+
+  .destination-image-bottom {
+    left: 22px;
+    right: 22px;
+    bottom: 22px;
+  }
+
+  .destinations-sidebar {
+    padding: 25px 22px 20px;
+  }
+
+  .destinations-sidebar-heading {
+    padding-bottom: 18px;
+  }
+
+  .destination-link {
+    padding: 17px 0;
+  }
+
+  .destination-link::before {
+    right: -22px;
+  }
+
+  .destination-link-name strong {
+    font-size: 17px;
+  }
+
+  .destination-link-arrow {
+    opacity: 1;
+    transform: none;
+  }
+
+  .destinations-progress {
+    margin-top: 25px;
+    padding-top: 15px;
+  }
+
+  .destinations-footer {
+    gap: 15px;
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+}
+
+/* تقليل الحركة حسب إعدادات الجهاز */
+
+@media (prefers-reduced-motion: reduce) {
+  .destination-image,
+  .destination-image-content {
+    animation: none;
+  }
+
+  .destination-link,
+  .destination-link-arrow,
+  .destinations-progress-track span {
+    transition: none;
+  }
+}
