@@ -69,7 +69,7 @@ export default function Services() {
         <div className="container-main services-heading">
           <span className="services-label">خدماتنا</span>
 
-          <h2 className="services-title">
+          <h2 className="services-title section-title ">
             حلول عقارية <em>متكاملة</em>
           </h2>
 

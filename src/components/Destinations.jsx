@@ -61,16 +61,16 @@ export default function Destinations() {
               وجهاتنا
             </span>
 
-            <h2 className="font-heading">
+            <h2 className="">
               حضور يمتد
               <span> عبر الخليج</span>
             </h2>
           </div>
 
-          <p className="font-arabic destinations-intro">
+          {/* <p className="font-arabic destinations-intro">
             من قلب المدن النابضة بالحياة، نختار وجهات تحمل فرصاً استثنائية ورؤية
             تتجاوز حدود المكان.
-          </p>
+          </p> */}
         </div>
 
         {/* العرض السينمائي */}

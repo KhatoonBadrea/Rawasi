@@ -22,7 +22,7 @@
 
   position: relative;
   width: 100%;
-  height: 350vh; /* طول السكرول: كبّريه = حركة أبطأ */
+  height: 310vh; /* طول السكرول: كبّريه = حركة أبطأ */
   background: var(--navy-deep);
   overflow-x: clip;
   font-family: "Tajawal", sans-serif;
@@ -208,7 +208,7 @@
 .why-intro span {
   color: var(--cream);
   font-family: "Noto Kufi Arabic", sans-serif;
-  font-size: clamp(36px, 7vw, 84px);
+  font-size: clamp(36px, 5vw, 70px);
   font-weight: 700;
   line-height: 1.4;
   white-space: nowrap;

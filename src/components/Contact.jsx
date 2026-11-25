@@ -69,19 +69,19 @@ function MountainBackground() {
 function PropertyGallery() {
   const images = [
     {
+      src: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=85",
+      alt: "واجهة عقارية فاخرة",
+      className: "contact-image-side contact-image-right",
+    },
+    {
       src: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=85",
       alt: "أفق مدينة دبي",
-      className: "contact-image-side contact-image-left",
+      className: "contact-image-side contact-image-main",
     },
     {
       src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=90",
       alt: "فيلا عصرية فاخرة",
-      className: "contact-image-main",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=85",
-      alt: "واجهة عقارية فاخرة",
-      className: "contact-image-side contact-image-right",
+      className: "contact-image-left",
     },
   ];
 
@@ -247,7 +247,7 @@ function ContactInfo() {
         >
           {/* Logo Symbol */}
           <div className="max-w-50 ">
-        <img src="./logo2.png" alt="" />
+            <img src="./logo2.png" alt="" />
           </div>
 
           {/* Brand Name */}

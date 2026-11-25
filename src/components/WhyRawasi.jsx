@@ -145,7 +145,7 @@ export default function WhyRawasi() {
 
         <div className="why-content">
           <header className="why-heading">
-            <span className="why-eyebrow">قيمنا</span>
+            {/* <span className="why-eyebrow">قيمنا</span> */}
 
             <h2 id="why-title">
               لماذا تختار <em>رواسي</em>؟

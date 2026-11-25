@@ -49,8 +49,10 @@
 .destinations-header h2 {
   margin: 0;
   color: #fff;
-  font-size: clamp(35px, 4.5vw, 58px);
-  font-weight: 500;
+    font-family: var(--font-heading);
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 800;
+  line-height: 1.55;
   line-height: 1.4;
 }
 

@@ -105,10 +105,10 @@
 .services-title {
   margin: 0 0 16px;
   color: var(--cream);
-  font-family: "Noto Kufi Arabic", sans-serif;
+  /* font-family: "Noto Kufi Arabic", sans-serif;
   font-size: 1.875rem;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.5; */
   /* text-align: center; */
 }
 

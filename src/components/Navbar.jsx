@@ -6,7 +6,8 @@ const NAV_LINKS = [
   { title: "العقارات", href: "#properties" },
   { title: "خدماتنا", href: "#services" },
   { title: "عن رواسي", href: "#about" },
-  { title: "المدونة", href: "#blog" },
+  { title: "لماذا رواسي", href: "#why-rawasi" },
+  { title: "وجهاتنا", href: "#destinations" },
   { title: "تواصل معنا", href: "#contact" },
 ];
 

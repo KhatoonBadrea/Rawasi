@@ -224,7 +224,7 @@ html {
   }
 
   .section-title {
-    @apply font-heading text-3xl font-bold text-navy
-    md:text-3xl tracking-[1.5px] leading-[1.7];
+    @apply font-heading text-3xl  font-bold text-navy
+    md:text-[44px] tracking-[1.5px] leading-[1.7];
   }
 }
