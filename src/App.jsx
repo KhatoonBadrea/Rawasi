@@ -24,8 +24,8 @@ function App() {
         <AboutSection />
         <WhyRawasi />
         <Destinations />
-        <SignatureCTA />
         <Contact />
+        <SignatureCTA />
       </main>
 
       <Footer />

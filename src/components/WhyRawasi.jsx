@@ -34,6 +34,17 @@ const values = [
   },
 ];
 
+/* ---------- Helpers ---------- */
+const clamp01 = (v) => Math.min(1, Math.max(0, v));
+
+// يحوّل قيمة من مجال [start, end] إلى [0, 1]
+const range = (v, start, end) => clamp01((v - start) / (end - start));
+
+// حركة ناعمة: بطيئة بالبداية والنهاية (مناسبة للشروق)
+const smooth = (t) => t * t * (3 - 2 * t);
+
+const MOBILE_QUERY = "(max-width: 900px)";
+
 export default function WhyRawasi() {
   const sectionRef = useRef(null);
 
@@ -41,124 +52,129 @@ export default function WhyRawasi() {
     const section = sectionRef.current;
     if (!section) return;
 
+    const mobile = window.matchMedia(MOBILE_QUERY);
     let frameId = null;
 
-    const updateReveal = () => {
-      if (frameId) cancelAnimationFrame(frameId);
-
-      frameId = requestAnimationFrame(() => {
-        const rect = section.getBoundingClientRect();
-
-        const distance = section.offsetHeight - window.innerHeight;
-
-        const progress = Math.min(1, Math.max(0, -rect.top / distance));
-
-        /*
-          المرحلة الأولى:
-          انتشار الدائرة والتوهج.
-        */
-        const revealProgress = Math.min(
-          1,
-          Math.max(0, (progress - 0.08) / 0.65),
-        );
-
-        /*
-          المرحلة الثانية:
-          اختفاء عنوان WHY RAWASI.
-        */
-        const introOpacity = Math.max(0, 1 - revealProgress * 1.8);
-
-        /*
-          المرحلة الثالثة:
-          ظهور محتوى القسم الكريمي.
-        */
-        const contentProgress = Math.min(
-          1,
-          Math.max(0, (revealProgress - 0.48) / 0.42),
-        );
-
-        section.style.setProperty("--reveal-progress", revealProgress);
-
-        section.style.setProperty("--intro-opacity", introOpacity);
-
-        section.style.setProperty("--content-progress", contentProgress);
-      });
+    const apply = (sun, content, intro) => {
+      section.style.setProperty("--sun", sun.toFixed(4));
+      section.style.setProperty("--content", content.toFixed(4));
+      section.style.setProperty("--intro", intro.toFixed(4));
     };
 
-    window.addEventListener("scroll", updateReveal, {
-      passive: true,
-    });
+    const update = () => {
+      frameId = null;
 
-    window.addEventListener("resize", updateReveal);
+      // على الموبايل التصميم ثابت: الحالة النهائية مباشرة
+      if (mobile.matches) {
+        apply(1, 1, 0);
+        return;
+      }
 
-    updateReveal();
+      const scrollable = section.offsetHeight - window.innerHeight;
+
+      if (scrollable <= 0) {
+        apply(1, 1, 0);
+        return;
+      }
+
+      const progress = clamp01(-section.getBoundingClientRect().top / scrollable);
+
+      const sun = smooth(range(progress, 0.04, 0.5)); // الشروق
+      const content = range(progress, 0.5, 0.88); // ظهور الكاردات
+      const intro = 1 - range(progress, 0.04, 0.3); // اختفاء العنوان الكبير
+
+      apply(sun, content, intro);
+    };
+
+    // نطلب frame واحد فقط لكل دورة رسم
+    const onScroll = () => {
+      if (frameId === null) frameId = requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    mobile.addEventListener("change", onScroll);
+
+    update();
 
     return () => {
-      if (frameId) cancelAnimationFrame(frameId);
-
-      window.removeEventListener("scroll", updateReveal);
-      window.removeEventListener("resize", updateReveal);
+      if (frameId !== null) cancelAnimationFrame(frameId);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      mobile.removeEventListener("change", onScroll);
     };
   }, []);
 
   return (
-    <section ref={sectionRef} className="why-section" id="why-rawasi" dir="rtl">
+    <section
+      ref={sectionRef}
+      className="why-section"
+      id="why-rawasi"
+      dir="rtl"
+      aria-labelledby="why-title"
+    >
       <div className="why-sticky">
-        {/* الخلفية الكحلية */}
-        <div className="why-navy-background"></div>
+        {/* ضوء الفجر عند الأفق */}
+        <div className="why-dawn" aria-hidden="true" />
 
-        {/* عنوان البداية */}
-        <div className="why-intro font-arabic">
+        {/* الشمس + التوهج + الأشعة */}
+        <div className="why-sunrise" aria-hidden="true">
+          <div className="why-rays" />
+          <div className="why-glow" />
+          <div className="why-sun" />
+        </div>
+
+        {/* سلسلة الجبال */}
+        <div className="why-ridge" aria-hidden="true">
+          <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path
+              className="ridge-back"
+              d="M0 320 V210 L120 150 L210 190 L340 90 L450 170 L560 120 L700 200 L820 110 L940 175 L1060 85 L1190 170 L1300 130 L1440 190 V320 Z"
+            />
+            <path
+              className="ridge-front"
+              d="M0 320 V260 L140 205 L260 250 L400 180 L520 245 L660 215 L800 262 L950 195 L1080 250 L1220 210 L1330 245 L1440 225 V320 Z"
+            />
+          </svg>
+        </div>
+
+        {/* عنوان البداية (زخرفي، العنوان الحقيقي هو h2) */}
+        <div className="why-intro" aria-hidden="true">
           <span>لماذا رواسي؟</span>
         </div>
 
-        {/* الدائرة الكريمية والتوهج */}
-        <div className="why-reveal-wrapper">
-          <div className="why-reveal-circle"></div>
-        </div>
-
-        {/* المحتوى الذي يظهر بعد انتشار الدائرة */}
         <div className="why-content">
           <header className="why-heading">
-            <span className="why-label mb-6 font-heading text-3xl font-bold tracking-wide leading-[1.7] sm:text-4xl md:text-5xl text-gold">
-              لماذا تختار رواسي؟
-            </span>
+            <span className="why-eyebrow">قيمنا</span>
 
-            {/* <h2 className="font-arabic text-cream">
-              لماذا <span className="text-gold">رواسي؟</span>
-            </h2> */}
+            <h2 id="why-title">
+              لماذا تختار <em>رواسي</em>؟
+            </h2>
 
-            <p className="text-slate font-arabic font-medium">
+            <p>
               لأننا نؤمن أن العقار ليس مجرد مكان، بل قيمة راسخة ومستقبل يُبنى
               بثقة.
             </p>
           </header>
 
-          <div className="why-cards font-arabic">
-            {values.map((item) => {
-              const Icon = item.icon;
+          <ul className="why-cards">
+            {values.map(({ icon: Icon, number, title, description }, index) => (
+              <li className="why-card" key={number} style={{ "--i": index }}>
+                <div className="why-card-top">
+                  <span className="why-card-number">{number}</span>
 
-              return (
-                <article className="why-card" key={item.number}>
-                  <div className="why-card-top">
-                    <span className="why-card-number font-english">
-                      {item.number}
-                    </span>
+                  <span className="why-icon">
+                    <Icon size={24} strokeWidth={1.5} />
+                  </span>
+                </div>
 
-                    <div className="why-icon">
-                      <Icon size={25} strokeWidth={1.4} />
-                    </div>
-                  </div>
+                <h3>{title}</h3>
+                <p>{description}</p>
 
-                  <h3>{item.title}</h3>
-
-                  <p>{item.description}</p>
-
-                  <span className="why-card-line"></span>
-                </article>
-              );
-            })}
-          </div>
+                <span className="why-card-line" />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
