@@ -3,138 +3,326 @@
 ========================= */
 
 .services-section {
+  --navy: var(--color-navy, #0b1f44);
+  --navy-deep: #050f26;
+  --gold: var(--color-gold, #f3c64f);
+  --gold-light: var(--color-gold-light, #e5c66b);
+  --cream: var(--color-cream, #f8f7f4);
+  --slate: var(--color-slate, #6b7280);
+
+  --overlap: 40px; /* قديش الكاردات تتداخل مع الجبال */
+
   position: relative;
   width: 100%;
-  padding: 55px 0 65px;
-  background-color: #f8f7f4;
-  overflow: hidden;
+  padding-bottom: 90px;
+  /* background: var(--cream); */
+  overflow: clip;
+  font-family: "Tajawal", sans-serif;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.services-hero {
+  position: relative;
+  isolation: isolate;
+  padding: 90px 0 170px;
+  background: var(--navy);
+}
+
+/*
+  الصورة الثابتة: position: fixed جوّا clip-path
+  (بتشتغل على كل الأجهزة بما فيها iPhone،
+  عكس background-attachment: fixed اللي بيتعطل على iOS)
+*/
+.services-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  clip-path: inset(0);
+}
+
+.services-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: var(--navy);
+  background-image: var(--services-bg, none);
+  background-size: cover;
+  background-position: center;
+}
+
+/* طبقة كحلية + لمعة ذهبية خفيفة من فوق */
+.services-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* background:
+    radial-gradient(
+      60% 80% at 50% 0%,
+      rgba(243, 198, 79, 0.16) 0%,
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(5, 15, 38, 0.86) 0%,
+      rgba(11, 31, 68, 0.8) 55%,
+      rgba(11, 31, 68, 0.94) 100%
+    ); */
+    background: linear-gradient(
+    -90deg,
+    rgba(11, 31, 68, 0.78) 0%,
+    rgba(11, 31, 68, 0.52) 45%,
+    rgba(167, 194, 245, 0.12) 100%
+  );
 }
 
 /* العنوان */
 
 .services-heading {
-  text-align: center !important;
-  margin-bottom: 5rem;
+  /* text-align: center; */
 }
 
 .services-label {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  color: #f3c64f;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: var(--gold);
+  font-family: "Noto Kufi Arabic", sans-serif;
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 1.5rem;
 }
 
-.services-label::before,
-.services-label::after {
+.services-label::before{
   content: "";
-  width: 20px;
+  width: 35px;
   height: 1px;
-  background-color: #f3c64f;
+  background: #f3c64f;
 }
 
-/* .services-heading h2 {
-  color: #0b1f44;
-  font-size: clamp(24px, 3vw, 32px);
+.services-title {
+  margin: 0 0 16px;
+  color: var(--cream);
+  font-family: "Noto Kufi Arabic", sans-serif;
+  font-size: 1.875rem;
   font-weight: 700;
-  margin: 0;
-  text-align: center !important;
+  line-height: 1.5;
+  /* text-align: center; */
+}
 
-} */
+.services-title em {
+  margin-right: 10px;
+  color: var(--gold);
+  font-style: normal;
+}
 
-/* شبكة الخدمات */
+.services-subtitle {
+  max-width: 560px;
+  margin: 0 1rem;
+  color: rgba(248, 247, 244, 0.78);
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+/* فاصل الجبال */
+
+.services-divider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: clamp(70px, 12vw, 150px);
+  pointer-events: none;
+}
+
+.services-divider svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.divider-back {
+  fill: rgba(248, 247, 244, 0.28);
+}
+
+.divider-front {
+  fill: var(--cream);
+}
+
+/* =========================
+   CARDS
+========================= */
+
+
+.services-body {
+  position: relative;
+  z-index: 1;
+  margin-top: calc(var(--overlap) * -1);
+  
+  background-color: #ffffff00;
+  /* background-color: #616979; */
+}
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: center;
-}
-
-.service-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  min-height: 105px;
-  padding: 8px 15px;
-  text-align: center;
-}
-
-/* الفواصل الذهبية */
-
-.service-item:not(:last-child) {
-  border-left: 1px solid rgba(212, 175, 55, 0.55);
-}
-
-/* الأيقونات */
-
-.service-icon {
-  width: 35px;
-  height: 35px;
-  color: #f3c64f;
-  transition: transform 0.35s ease;
-}
-
-.service-item h3 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
   margin: 0;
-  color: #374151;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.7;
+  padding: 0;
+  list-style: none;
 }
 
-/* حركة بسيطة عند المرور */
+.service-card {
+  position: relative;
+  min-width: 0;
+  padding: 36px 26px 32px;
+  overflow: hidden;
 
-.service-item:hover .service-icon {
-  transform: translateY(-5px);
+  background: #fff;
+  border: 1px solid rgba(229, 198, 107, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(11, 31, 68, 0.09);
+
+  opacity: 0; /* يظهر بالـ animation */
+
+  transition:
+    translate 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+    margin-bottom: 2rem;
+}
+
+/* الخط الذهبي العلوي: بيمتد عند الـ hover */
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform: scaleX(0.22);
+  transform-origin: right;
+  transition: transform 0.45s ease;
+}
+
+.service-card:hover {
+  translate: 0 -8px;
+  border-color: rgba(243, 198, 79, 0.7);
+  box-shadow: 0 24px 50px rgba(11, 31, 68, 0.15);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* الرقم الباهت بالزاوية */
+.service-number {
+  position: absolute;
+  top: 20px;
+  left: 22px;
+  color: rgba(11, 31, 68, 0.07);
+  font-family: "Montserrat", sans-serif;
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* الأيقونة: ذهبية على دائرة كحلية (تباين عالي) */
+.service-icon-wrap {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 24px;
+
+  color: var(--gold);
+  background: var(--navy);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(243, 198, 79, 0.14);
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.service-card:hover .service-icon-wrap {
+  color: var(--navy);
+  background: var(--gold);
+  box-shadow: 0 0 0 10px rgba(243, 198, 79, 0.18);
+}
+
+.service-card h3 {
+  margin: 0 0 10px;
+  color: var(--navy);
+  font-family: "Noto Kufi Arabic", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.service-card p {
+  margin: 0;
+  color: var(--slate);
+  font-size: 14.5px;
+  line-height: 1.9;
+}
+
+/* ظهور متتابع */
+.services-section.is-visible .service-card {
+  animation: service-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--i) * 120ms);
+}
+
+@keyframes service-rise {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
 
-@media (max-width: 768px) {
-  .services-section {
-    padding: 45px 0;
-  }
-
+@media (max-width: 1024px) {
   .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 25px;
-  }
-
-  .service-item:nth-child(2) {
-    border-left: none;
-  }
-
-  .service-item:nth-child(3) {
-    border-left: 1px solid rgba(212, 175, 55, 0.55);
-  }
-
-  .service-item {
-    min-height: 110px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 480px) {
-  .services-heading {
-    margin-bottom: 28px;
+@media (max-width: 560px) {
+  .services-hero {
+    padding: 70px 0 130px;
   }
 
-  .services-heading h2 {
-    font-size: 24px;
+  .services-section {
+    padding-bottom: 60px;
   }
 
-  .service-item h3 {
-    font-size: 13px;
+  .services-subtitle {
+    font-size: 15px;
   }
 
-  .service-icon {
-    width: 31px;
-    height: 31px;
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card {
+    opacity: 1;
+  }
+
+  .services-section.is-visible .service-card {
+    animation: none;
   }
 }

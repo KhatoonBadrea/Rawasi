@@ -25,7 +25,7 @@ export default function AboutSection() {
     >
       <p
         className="rw-up mb-6 inline-flex items-center gap-3 self-center font-arabic text-sm font-semibold leading-[1.7] tracking-wide text-gold"
-        style={{ "--d": "0.5s" }}
+        style={{ "--d": "0.3s" }}
       >
         <span className="h-px w-10 bg-gold" />
         {eyebrow}
@@ -33,29 +33,29 @@ export default function AboutSection() {
       </p>
       {/* <span className="span-circle"></span> */}
       <div className="flex flex-col gap-10 md:flex-row">
-        <div className="relative z-10 mx-3 max-w-5xl px-6">
-          <header className="mx-auto max-w-2xl text-end">
+        <div className="relative z-10 mx-0 max-w-5xl px-6">
+          <header className=" max-w-2xl text-end">
             <h2
               id="about-title"
               className="section-title mt-3   text-[#FAF8F4]"
             >
               <span
-                className="rw-up block mb-0    text-white "
-                style={{ "--d": "0.7s" }}
+                className="rw-up block mb-0 mr-[1rem]   text-white "
+                style={{ "--d": "0.4s" }}
               >
                 {titleLine1}
               </span>
               <span
-                className="rw-up block mx-1.5 text-gold mb-5 mt-0    "
-                style={{ "--d": "0.9s" }}
+                className="rw-up block  text-gold mb-5 mt-0  mr-[1.5rem]  "
+                style={{ "--d": "0.5s" }}
               >
                 {titleLine2}
               </span>
             </h2>
 
             <p
-              className="rw-up font-arabic mb-9 max-w-lg text-sm leading-8 text-[#a3aab8] sm:text-basel"
-              style={{ "--d": "1.1s" }}
+              className="rw-up  font-arabic mb-9 max-w-lg mr-[2rem] text-sm leading-8 text-[#a3aab8] sm:text-basel"
+              style={{ "--d": "0.7s" }}
             >
               {description}
             </p>
@@ -70,20 +70,20 @@ export default function AboutSection() {
                 suffix={stat.suffix}
                 label={stat.label}
                 peakIndex={i}
-                delay={`${1.3 + i * 0.12}s`}
+                delay={`${1.3 + i * 0.5}s`}
                 active={inView}
               />
             ))}
           </ul>
 
-          <ul className="mt-14 mb-14 grid gap-6 max-[md:grid-cols-1 max-[950px]:grid-cols-2 min-[950px]:grid-cols-3">
+          <ul className="mt-14 mr-[3rem]  mb-14 grid gap-6 max-[md:grid-cols-1 max-[950px]:grid-cols-2 min-[950px]:grid-cols-3">
             {VALUES.map((item, i) => (
               <ValueCard
                 key={item.id}
                 icon={item.icon}
                 title={item.title}
                 text={item.text}
-                delay={`${1.8 + i * 0.12}s`}
+                delay={`${1.8 + i * 0.6}s`}
               />
             ))}
           </ul>

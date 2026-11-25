@@ -47,7 +47,7 @@ export default function StatItem({
         {count.toLocaleString("en-US")}
         {suffix}
       </p>
-      <p className="mt-1 text-sm text-[#C9C2AE] font-arabic md:text-base">
+      <p className="mt-4 text-sm text-[#C9C2AE] font-arabic md:text-base">
         {label}
       </p>
     </li>
