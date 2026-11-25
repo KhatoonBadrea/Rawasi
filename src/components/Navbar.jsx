@@ -18,12 +18,12 @@ function Logo() {
       className="flex shrink-0 items-center gap-3"
     >
       {/* Logo Symbol */}
-      <div className="max-w-20 h-20">
-        <img src="./favicon.png" alt="" />
+      <div className="max-w-60">
+        <img src="./logo2.png" alt="" />
       </div>
 
       {/* Brand Name */}
-      <div className="flex flex-col">
+      {/* <div className="flex flex-col">
         <span className="  font-amiri p-1.5 text-xl font-bold  text-gold">
           رواســي
         </span>
@@ -35,7 +35,7 @@ function Logo() {
         <span className="font-amiri  text-[8px] tracking-[1.5px] text-white/60">
           LUXURY REAL ESTATE
         </span>
-      </div>
+      </div> */}
     </a>
   );
 }
@@ -46,7 +46,7 @@ export default function Navbar() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-navy shadow-lg shadow-navy/10">
+    <header className="sticky top-0 z-50 w-full bg-navy shadow-lg shadow-navy/10 font-arabic">
       <div className="container-main">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}

@@ -9,17 +9,17 @@ const HERO_IMAGES = [
   },
   {
     id: 2,
-    image: "./src/assest/tawel.jpg",
+    image: "./src/assest/coffe.png",
     alt: "تصميم معماري فاخر",
   },
   {
     id: 3,
-    image: "./src/assest/biulding3.jpeg",
+    image: "./src/assest/coffe2.jpg",
     alt: "واجهة منزل فاخر",
   },
   {
     id: 4,
-    image: "./src/assest/biulding4.jpg",
+    image: "./src/assest/biulding5.jpg",
     alt: "مساحة معيشة فاخرة",
   },
 ];
@@ -99,7 +99,7 @@ export function Hero() {
             {/* Heading */}
             <h1 className="mb-6 font-heading text-3xl font-bold tracking-wide leading-[1.7] text-white sm:text-4xl md:text-5xl">
               امتلك عنوانك الراقي
-              <span className="block text-gold">في قلب الإمارات</span>
+              <span className="block text-gold">في قلب الخليج</span>
             </h1>
 
             {/* Description */}

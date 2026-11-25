@@ -8,25 +8,29 @@ const values = [
     icon: ShieldCheck,
     number: "01",
     title: "الثقة والشفافية",
-    description: "علاقة واضحة وموثوقة في كل خطوة من رحلتك العقارية.",
+    description:
+      "نبني علاقاتنا على الوضوح والمصداقية، ونضع ثقة عملائنا في مقدمة أولوياتنا.",
   },
   {
     icon: Mountain,
     number: "02",
     title: "ثبات واستقرار",
-    description: "رؤية طويلة الأمد تستند إلى أسس راسخة في عالم العقارات.",
+    description:
+      "نؤمن بأن الاستثمار العقاري الناجح يبدأ من قرارات مدروسة وأسس راسخة.",
   },
   {
     icon: Gem,
     number: "03",
     title: "جودة الاختيار",
-    description: "نحرص على تقديم خيارات عقارية ترتقي بتطلعات عملائنا.",
+    description:
+      "ننتقي الفرص والعقارات بعناية لنقدم قيمة حقيقية تتجاوز التوقعات.",
   },
   {
     icon: Handshake,
     number: "04",
     title: "شراكة مستدامة",
-    description: "نبني علاقات تتجاوز الصفقة نحو قيمة تدوم.",
+    description:
+      "نرافق عملاءنا في رحلتهم العقارية بعلاقة قائمة على الاهتمام والاستمرارية.",
   },
 ];
 
@@ -37,92 +41,123 @@ export default function WhyRawasi() {
     const section = sectionRef.current;
     if (!section) return;
 
-    let frameId;
+    let frameId = null;
 
     const updateReveal = () => {
-      cancelAnimationFrame(frameId);
+      if (frameId) cancelAnimationFrame(frameId);
 
       frameId = requestAnimationFrame(() => {
         const rect = section.getBoundingClientRect();
-        const scrollDistance = section.offsetHeight - window.innerHeight;
 
-        const progress = Math.min(1, Math.max(0, -rect.top / scrollDistance));
+        const distance = section.offsetHeight - window.innerHeight;
 
-        const scale = 0.8 + progress * 9.2;
+        const progress = Math.min(1, Math.max(0, -rect.top / distance));
 
-        section.style.setProperty("--reveal-scale", scale);
-        section.style.setProperty("--reveal-progress", progress);
+        /*
+          المرحلة الأولى:
+          انتشار الدائرة والتوهج.
+        */
+        const revealProgress = Math.min(
+          1,
+          Math.max(0, (progress - 0.08) / 0.65),
+        );
+
+        /*
+          المرحلة الثانية:
+          اختفاء عنوان WHY RAWASI.
+        */
+        const introOpacity = Math.max(0, 1 - revealProgress * 1.8);
+
+        /*
+          المرحلة الثالثة:
+          ظهور محتوى القسم الكريمي.
+        */
+        const contentProgress = Math.min(
+          1,
+          Math.max(0, (revealProgress - 0.48) / 0.42),
+        );
+
+        section.style.setProperty("--reveal-progress", revealProgress);
+
+        section.style.setProperty("--intro-opacity", introOpacity);
+
+        section.style.setProperty("--content-progress", contentProgress);
       });
     };
 
-    window.addEventListener("scroll", updateReveal, { passive: true });
+    window.addEventListener("scroll", updateReveal, {
+      passive: true,
+    });
+
     window.addEventListener("resize", updateReveal);
 
     updateReveal();
 
     return () => {
-      cancelAnimationFrame(frameId);
+      if (frameId) cancelAnimationFrame(frameId);
+
       window.removeEventListener("scroll", updateReveal);
       window.removeEventListener("resize", updateReveal);
     };
   }, []);
 
   return (
-    <section className="why-rawasi-wrapper" ref={sectionRef} id="why-rawasi">
-      <div className="why-rawasi-sticky">
+    <section ref={sectionRef} className="why-section" id="why-rawasi" dir="rtl">
+      <div className="why-sticky">
         {/* الخلفية الكحلية */}
-        <div className="why-rawasi-dark-bg">
-          <span className="why-rawasi-background-text font-english ">
-            WHY RAWASI?
-          </span>
+        <div className="why-navy-background"></div>
+
+        {/* عنوان البداية */}
+        <div className="why-intro font-arabic">
+          <span>لماذا رواسي؟</span>
         </div>
 
-        {/* الدائرة الكريمية المتوسعة */}
-        <div className="why-rawasi-reveal">
-          <div className="why-rawasi-circle" />
+        {/* الدائرة الكريمية والتوهج */}
+        <div className="why-reveal-wrapper">
+          <div className="why-reveal-circle"></div>
         </div>
 
-        {/* محتوى القسم */}
-        <div className="why-rawasi-content" dir="rtl">
-          <div className="why-rawasi-heading">
-            <span className="why-rawasi-label font-heading font-semibold text-gold mt-20">
-              <span />
-              لماذا رواسي؟
-              <span />
+        {/* المحتوى الذي يظهر بعد انتشار الدائرة */}
+        <div className="why-content">
+          <header className="why-heading">
+            <span className="why-label mb-6 font-heading text-3xl font-bold tracking-wide leading-[1.7] sm:text-4xl md:text-5xl text-gold">
+              لماذا تختار رواسي؟
             </span>
 
-            <h2 className="section-title ">
-              لأن اختيارك يستحق
-              <br />
-              <strong className="text-gold">أساساً راسخاً.</strong>
-            </h2>
+            {/* <h2 className="font-arabic text-cream">
+              لماذا <span className="text-gold">رواسي؟</span>
+            </h2> */}
 
-            <p className="font-arabic text-slate">
-              نؤمن أن العقار أكثر من مجرد مكان، إنه قرار يصنع قيمة للمستقبل.
+            <p className="text-slate font-arabic font-medium">
+              لأننا نؤمن أن العقار ليس مجرد مكان، بل قيمة راسخة ومستقبل يُبنى
+              بثقة.
             </p>
-          </div>
+          </header>
 
-          <div className="why-rawasi-values">
-            {values.map((value) => {
-              const Icon = value.icon;
+          <div className="why-cards font-arabic">
+            {values.map((item) => {
+              const Icon = item.icon;
 
               return (
-                <article className="why-rawasi-card" key={value.number}>
-                  <span className="why-rawasi-number">{value.number}</span>
+                <article className="why-card" key={item.number}>
+                  <div className="why-card-top">
+                    <span className="why-card-number font-english">
+                      {item.number}
+                    </span>
 
-                  <Icon className="why-rawasi-icon" strokeWidth={1.3} />
+                    <div className="why-icon">
+                      <Icon size={25} strokeWidth={1.4} />
+                    </div>
+                  </div>
 
-                  <h3 className="font-heading">{value.title}</h3>
+                  <h3>{item.title}</h3>
 
-                  <p className="font-arabic">{value.description}</p>
+                  <p>{item.description}</p>
+
+                  <span className="why-card-line"></span>
                 </article>
               );
             })}
-          </div>
-
-          <div className="why-rawasi-footer">
-            <span className="font-arabic">ثبات في الرؤية، وقيمة تدوم.</span>
-            <span className="font-english">RAWASI</span>
           </div>
         </div>
       </div>

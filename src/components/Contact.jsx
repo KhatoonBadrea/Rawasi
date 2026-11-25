@@ -246,12 +246,12 @@ function ContactInfo() {
           className="flex shrink-0 items-center gap-3"
         >
           {/* Logo Symbol */}
-          <div className="max-w-25 h-25">
-            <img src="./favicon.png" alt="" />
+          <div className="max-w-50 ">
+        <img src="./logo2.png" alt="" />
           </div>
 
           {/* Brand Name */}
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <span className="  font-amiri p-1.5 text-sm font-bold  text-gold">
               رواســي
             </span>
@@ -259,7 +259,7 @@ function ContactInfo() {
             <span className="font-amiri text-sm font-blod tracking-[2px] text-gold">
               RAWASI
             </span>
-          </div>
+          </div> */}
         </a>
 
         <div className="contact-info-item">
